@@ -9,10 +9,12 @@ import PerformanceRadarChart from "../../components/PerformanceRadarChart";
 import PointsDistributionChart from "../../components/PointsDistributionChart";
 
 export default function Dashboard() {
-  const { user, isLoading: authLoading } = useUser();
-  const router = useRouter();
-  const [players, setPlayers] = useState<Player[]>([]);
-  const [loading, setLoading] = useState(true);
+   const { user, isLoading: authLoading } = useUser();
+   useRouter();
+   // @ts-ignore
+   const [players, setPlayers] = useState<Player[]>([]);
+   const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         if (!authLoading && !user) {
