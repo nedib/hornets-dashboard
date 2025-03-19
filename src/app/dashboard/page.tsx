@@ -8,10 +8,6 @@ import ShootingEfficiencyChart from "../../components/ShootingEfficiencyChart";
 import PerformanceRadarChart from "../../components/PerformanceRadarChart";
 import PointsDistributionChart from "../../components/PointsDistributionChart";
 
-interface PlayersResponse {
-  players: Player[];
-}
-
 export default function Dashboard() {
   const { user, isLoading: authLoading } = useUser();
   const router = useRouter();
