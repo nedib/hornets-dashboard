@@ -5,6 +5,6 @@ if (!process.env.AUTH0_SECRET) {
 }
 
 export default handleAuth({
-  cookieSecret: process.env.AUTH0_SECRET,
+  cookieSecret: process.env.AUTH0_SECRET as string,
   cookieSecure: process.env.NODE_ENV === 'production',
 });
