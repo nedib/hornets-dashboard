@@ -10,7 +10,7 @@ import PointsDistributionChart from "../../components/PointsDistributionChart";
 
 export default function Dashboard() {
     const { user, isLoading: authLoading } = useUser();
-    const router = useRouter();
+    useRouter();
     const [players, setPlayers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
