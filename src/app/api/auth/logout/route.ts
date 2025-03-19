@@ -2,6 +2,7 @@ import { handleLogout } from '@auth0/nextjs-auth0';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
+    // @ts-ignore
     const logoutRes = await handleLogout(request, {
         returnTo: "/",
         logoutParams: { federated: true },
