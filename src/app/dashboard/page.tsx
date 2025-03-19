@@ -8,11 +8,15 @@ import ShootingEfficiencyChart from "../../components/ShootingEfficiencyChart";
 import PerformanceRadarChart from "../../components/PerformanceRadarChart";
 import PointsDistributionChart from "../../components/PointsDistributionChart";
 
+interface PlayersResponse {
+  players: Player[];
+}
+
 export default function Dashboard() {
-    const { user, isLoading: authLoading } = useUser();
-    useRouter();
-    const [players, setPlayers] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
+  const { user, isLoading: authLoading } = useUser();
+  const router = useRouter();
+  const [players, setPlayers] = useState<Player[]>([]);
+  const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (!authLoading && !user) {
