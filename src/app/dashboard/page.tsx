@@ -8,10 +8,21 @@ import ShootingEfficiencyChart from "../../components/ShootingEfficiencyChart";
 import PerformanceRadarChart from "../../components/PerformanceRadarChart";
 import PointsDistributionChart from "../../components/PointsDistributionChart";
 
+interface Player {
+    id: number;
+    name: string;
+    team: string;
+    pointsPerGame: number;
+    rebounds: number;
+    assists: number;
+    fieldGoalPercentage: number;
+    minutes: number;
+}
+
+
 export default function Dashboard() {
    const { user, isLoading: authLoading } = useUser();
    useRouter();
-   // @ts-ignore
    const [players, setPlayers] = useState<Player[]>([]);
    const [loading, setLoading] = useState(true);
 
