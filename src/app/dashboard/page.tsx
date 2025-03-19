@@ -19,20 +19,17 @@ interface Player {
     minutes: number;
 }
 
-
 export default function Dashboard() {
-   const { user, isLoading: authLoading } = useUser();
-   useRouter();
-   const [players, setPlayers] = useState<Player[]>([]);
-   const [loading, setLoading] = useState(true);
-
+    const { user, isLoading: authLoading } = useUser();
+    const router = useRouter();
+    const [players, setPlayers] = useState<Player[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (!authLoading && !user) {
-            router.push("/api/auth/login?returnTo=/dashboard");
+            window.location.href = "/api/auth/login?returnTo=/dashboard";
         }
-    }, [authLoading, user, router]);
-
+    }, [authLoading, user]);
 
     useEffect(() => {
         if (user) {
@@ -59,13 +56,13 @@ export default function Dashboard() {
 
     return (
         <div className="p-4">
-            <h1 className="text-2xl font-bold mb-6">
-                Charlotte Hornets Player Stats
-            </h1>
+            <h1 className="text-2xl font-bold mb-6">Charlotte Hornets Player Stats</h1>
+
             <div className="mb-8">
                 <h2 className="text-xl font-semibold mb-2">Player Leaderboard</h2>
                 <Leaderboard players={players} />
             </div>
+
             <div className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                     <h2 className="text-xl font-semibold mb-2">Shooting Efficiency</h2>
@@ -76,13 +73,10 @@ export default function Dashboard() {
                     <PointsDistributionChart players={players} />
                 </div>
             </div>
+
             <div>
-                <h2 className="text-xl font-semibold mb-2">
-                    Performance Radar Chart
-                </h2>
-                {players.length > 0 && (
-                    <PerformanceRadarChart player={players[0]} />
-                )}
+                <h2 className="text-xl font-semibold mb-2">Performance Radar Chart</h2>
+                {players.length > 0 && <PerformanceRadarChart player={players[0]} />}
             </div>
         </div>
     );
